@@ -1,5 +1,10 @@
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
 import Link from 'next/link'
-import FlexMenu from './flexmenu'
 
 const Header = () => {
   return (
@@ -20,7 +25,23 @@ const Header = () => {
         </Link>
       </div>
       <div className=" fixed right-0 mr-[32px] sm:hidden max-[180px]:hidden">
-        <FlexMenu />
+        <DropdownMenu>
+          <DropdownMenuTrigger className="i-lucide-menu size-6"></DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
+              Home
+            </DropdownMenuItem>
+            <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
+              Projects
+            </DropdownMenuItem>
+            <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
+              Setting
+            </DropdownMenuItem>
+            <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
+              Login
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </div>
   )
