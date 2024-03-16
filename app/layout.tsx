@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={(inter.className, 'bg-[#F1EFE8] h-screen w-screen')}>
+      <body className={(inter.className, 'bg-[#F0F0EB] h-screen w-screen')}>
         <header className="font-normal text-[#29261b] text-base font-serif">
           <Header />
         </header>

@@ -8,8 +8,8 @@ import Link from 'next/link'
 
 const Header = () => {
   return (
-    <div className="flex p-[32px]">
-      <header className="">portfoliosite</header>
+    <div className="flex p-[32px] ">
+      <header className="font-black text-lg">portfoliosite</header>
       <div className="hidden sm:flex absolute right-0">
         <Link href="/" className="mr-[32px]">
           Home
