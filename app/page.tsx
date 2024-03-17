@@ -1,5 +1,6 @@
 import parse from 'html-react-parser'
-import { fetchProfileData, fetchProjectsData } from './fetchdata.sever'
+import Link from 'next/link'
+import { fetchProfileData, fetchProjectsDataHome } from './fetchdata.server'
 
 interface Project {
   id: string
@@ -11,12 +12,10 @@ interface Project {
 export default async function Home() {
   const profileData = await fetchProfileData()
   {
-    console.log(profileData)
   }
 
-  const projectsData = await fetchProjectsData()
+  const projectsDataHome = await fetchProjectsDataHome()
   {
-    console.log(projectsData)
   }
 
   return (
@@ -34,17 +33,19 @@ export default async function Home() {
         </div>
       </div>
       <div className="bg-white border border-slate-100 flex flex-wrap justify-center">
-        {projectsData.contents.map((project: Project) => (
+        {projectsDataHome.contents.map((project: Project) => (
           <div key={project.id} className="m-3">
-            <img
-              src={project.thumbnail.url}
-              className="rounded-lg"
-              width="300"
-              height="200"
-            />
-            <div className="font-normal text-[#29261b] text-xl font-serif m-3 ">
-              {project.title}
-            </div>
+            <Link href={`/projects/${project.id}`}>
+              <img
+                src={project.thumbnail.url}
+                className="rounded-lg"
+                width="300"
+                height="200"
+              />
+              <div className="font-normal text-[#29261b] text-xl font-serif m-3 ">
+                {project.title}
+              </div>
+            </Link>
           </div>
         ))}
       </div>
