@@ -17,9 +17,6 @@ const Header = () => {
         <Link href="/projects" className="mr-[32px]">
           Projects
         </Link>
-        <Link href="/admin" className="mr-[32px]">
-          Admin
-        </Link>
       </div>
       <div className=" fixed right-0 mr-[32px] sm:hidden max-[180px]:hidden">
         <DropdownMenu>
@@ -30,9 +27,6 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
               Projects
-            </DropdownMenuItem>
-            <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
-              Admin
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
