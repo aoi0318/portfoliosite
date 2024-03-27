@@ -20,7 +20,7 @@ const Header = () => {
       </div>
       <div className=" fixed right-0 mr-[32px] sm:hidden max-[180px]:hidden">
         <DropdownMenu>
-          <DropdownMenuTrigger className="i-lucide-menu size-6"></DropdownMenuTrigger>
+          <DropdownMenuTrigger className="i-lucide-menu size-6" />
           <DropdownMenuContent>
             <DropdownMenuItem className="font-normal text-[#29261b] text-base font-serif">
               Home

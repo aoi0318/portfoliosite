@@ -13,23 +13,31 @@ interface ProjectListProps {
 
 const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
   return (
-    <>
-      {projects.map((project: Project) => (
-        <div key={project.id} className="m-3">
-          <Link href={`/projects/${project.id}`}>
-            <img
-              src={project.thumbnail.url}
-              className="rounded-lg"
-              width="300"
-              height="200"
-            />
-            <div className="font-normal text-[#29261b] text-xl font-serif m-3 ">
-              {project.title}
-            </div>
-          </Link>
-        </div>
-      ))}
-    </>
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 m-4">
+        {projects.map((project: Project) => (
+          <div
+            key={project.id}
+            className="bg-white shadow-md rounded-lg overflow-hidden"
+          >
+            <Link href={`/projects/${project.id}`}>
+              <img
+                alt={project.title}
+                src={project.thumbnail.url}
+                className="w-full h-48 object-cover"
+                width="300"
+                height="200"
+              />
+              <div className="p-4">
+                <div className="font-normal text-[#29261b] text-xl font-serif">
+                  {project.title}
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
 

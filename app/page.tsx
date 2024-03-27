@@ -11,18 +11,15 @@ interface Project {
 
 export default async function Home() {
   const profileData = await fetchProfileData()
-  {
-  }
 
   const projectsDataHome = await fetchProjectsDataHome()
-  {
-  }
 
   return (
     <div>
       <div className="text-center mb-10">
         <img
           src={profileData.icon.url}
+          alt={profileData.name}
           className="mx-auto size-52 rounded-full border-8 "
         />
         <div className="font-normal text-[#29261b] text-2xl font-serif m-3 ">
@@ -37,6 +34,7 @@ export default async function Home() {
           <div key={project.id} className="m-3">
             <Link href={`/projects/${project.id}`}>
               <img
+                alt={project.title}
                 src={project.thumbnail.url}
                 className="rounded-lg"
                 width="300"
