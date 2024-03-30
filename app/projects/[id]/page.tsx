@@ -1,5 +1,7 @@
 import { fetchProjectsData } from '@/app/fetchdata.server'
-import perse from 'html-react-parser'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import parser from 'rich-editor-to-markdown-parser'
 
 interface Project {
   id: string
@@ -34,12 +36,23 @@ export default async function projectsId({
     return <div>Project not found</div>
   }
 
+  // HTMLをマークダウンに変換
+  const markdown = parser(project.body)
+
   return (
     <div>
-      <div>
-        <img src={project.thumbnail.url} alt={project.title} />
-        <h2>{project.title}</h2>
-        {perse(project.body)}
+      <div className="mx-20 mt-10 font-normal text-base font-serif ">
+        <div className="flex items-center">
+          <img
+            src={project.thumbnail.url}
+            alt={project.title}
+            className="mr-3 rounded-t-full"
+          />
+          <h2 className="text-2xl font-bold">{project.title}</h2>
+        </div>
+        <div className="bg-white rounded-b-lg text-xl p-5">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+        </div>
       </div>
     </div>
   )

@@ -29,7 +29,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projects }) => {
                 height="200"
               />
               <div className="p-4">
-                <div className="font-normal text-[#29261b] text-xl font-serif">
+                <div className="font-normal text-xl font-serif">
                   {project.title}
                 </div>
               </div>

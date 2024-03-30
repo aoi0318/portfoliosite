@@ -1,18 +1,14 @@
-import parse from 'html-react-parser'
-import Link from 'next/link'
-import { fetchProfileData, fetchProjectsDataHome } from './fetchdata.server'
-
-interface Project {
-  id: string
-  thumbnail: { url: string }
-  title: string
-  body: string
-}
+import Page from '@/app/projects/page'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import parser from 'rich-editor-to-markdown-parser'
+import { fetchProfileData } from './fetchdata.server'
 
 export default async function Home() {
   const profileData = await fetchProfileData()
 
-  const projectsDataHome = await fetchProjectsDataHome()
+  // HTMLをマークダウンに変換
+  const markdown = parser(profileData.body)
 
   return (
     <div>
@@ -22,31 +18,14 @@ export default async function Home() {
           alt={profileData.name}
           className="mx-auto size-52 rounded-full border-8 "
         />
-        <div className="font-normal text-[#29261b] text-2xl font-serif m-3 ">
+        <div className="font-normal text-2xl font-serif m-3 ">
           {profileData.name}
         </div>
-        <div className="font-normal text-[#6E57FF] hover:text-[#6E57FF] text-base font-serif">
-          {parse(profileData.body)}
+        <div className="font-normal text-base font-serif">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
         </div>
       </div>
-      <div className="bg-white border border-slate-100 flex flex-wrap justify-center">
-        {projectsDataHome.contents.map((project: Project) => (
-          <div key={project.id} className="m-3">
-            <Link href={`/projects/${project.id}`}>
-              <img
-                alt={project.title}
-                src={project.thumbnail.url}
-                className="rounded-lg"
-                width="300"
-                height="200"
-              />
-              <div className="font-normal text-[#29261b] text-xl font-serif m-3 ">
-                {project.title}
-              </div>
-            </Link>
-          </div>
-        ))}
-      </div>
+      <Page />
     </div>
   )
 }
